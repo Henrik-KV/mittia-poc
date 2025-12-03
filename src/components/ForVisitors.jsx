@@ -1,4 +1,5 @@
 import { Ticket, Car, Hotel, MapPin, Clock, CreditCard, Users, Coffee, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const practicalInfo = [
   {
@@ -59,9 +60,12 @@ export default function ForVisitors() {
   return (
     <section id="besokare" className="py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Section Header - Mittia red */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-gradient-to-r from-orange-500 to-cyan-500 text-white text-sm font-medium rounded-full mb-4">
+          <span 
+            className="inline-block px-4 py-2 text-white text-sm font-medium rounded-full mb-4"
+            style={{ backgroundColor: '#ae220b' }}
+          >
             För besökare
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -109,7 +113,7 @@ export default function ForVisitors() {
               const Icon = exp.icon
               return (
                 <div key={index} className="text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Icon className="w-8 h-8 text-gray-700" />
                   </div>
                   <h4 className="font-bold text-gray-900 mb-2">{exp.title}</h4>
@@ -120,21 +124,23 @@ export default function ForVisitors() {
           </div>
         </div>
 
-        {/* Get Tickets CTA */}
-        <div className="bg-gradient-to-r from-amber-500 via-green-500 to-cyan-500 rounded-3xl p-8 md:p-12">
+        {/* Get Tickets CTA - Mittia red background, black button */}
+        <div className="rounded-3xl p-8 md:p-12" style={{ backgroundColor: '#ae220b' }}>
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-white mb-6 md:mb-0">
               <h3 className="text-2xl md:text-3xl font-bold mb-2">
                 Skaffa din biljett
               </h3>
-              <p className="text-white/80">
+              <p className="text-white/90">
                 Kontakta utställare för gratis inbjudan eller köp dagentré på plats via kort/Swish.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
               <a 
-                href="#massor" 
-                className="flex items-center justify-center space-x-2 px-8 py-4 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all"
+                href="https://www.mittia.com/skogstransport/utstallare/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center space-x-2 px-8 py-4 bg-black text-white font-semibold rounded-full hover:bg-gray-900 transition-all"
               >
                 <span>Se utställare</span>
                 <ArrowRight className="w-5 h-5" />
@@ -157,7 +163,12 @@ export default function ForVisitors() {
               och parkering finns på plats. Tågförbindelse till Ljusdal finns från 
               Stockholm, Sundsvall och Gävle.
             </p>
-            <a href="#" className="text-amber-600 font-medium flex items-center hover:text-amber-700">
+            <a 
+              href="https://maps.app.goo.gl/iuB6EyrGhhAcJEUx8" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-amber-600 font-medium flex items-center hover:text-amber-700"
+            >
               Vägbeskrivning <ArrowRight className="w-4 h-4 ml-1" />
             </a>
           </div>
@@ -180,8 +191,8 @@ export default function ForVisitors() {
           </div>
         </div>
 
-        {/* Upplev Ljusdal */}
-        <div className="mt-8 bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-center">
+        {/* Upplev Ljusdal - black background with black button */}
+        <div className="mt-8 bg-gray-900 rounded-3xl p-8 md:p-12 text-center">
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Upplev Ljusdal & Hälsingland
           </h3>
@@ -193,7 +204,7 @@ export default function ForVisitors() {
             href="https://destinationhalsingland.se/" 
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center space-x-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-100 transition-all"
+            className="inline-flex items-center space-x-2 px-6 py-3 bg-black text-white font-semibold rounded-full border border-white/20 hover:bg-gray-800 transition-all"
           >
             <span>Utforska Hälsingland</span>
             <ArrowRight className="w-5 h-5" />

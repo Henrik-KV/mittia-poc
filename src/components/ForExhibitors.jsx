@@ -47,7 +47,10 @@ export default function ForExhibitors() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-gradient-to-r from-amber-500 to-green-500 text-white text-sm font-medium rounded-full mb-4">
+          <span 
+            className="inline-block px-4 py-2 text-white text-sm font-medium rounded-full mb-4"
+            style={{ backgroundColor: '#ae220b' }}
+          >
             För utställare
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -59,7 +62,7 @@ export default function ForExhibitors() {
           </p>
         </div>
 
-        {/* Benefits Grid */}
+        {/* Benefits Grid - Mittia red icons */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon
@@ -68,7 +71,10 @@ export default function ForExhibitors() {
                 key={index}
                 className="text-center p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                  style={{ backgroundColor: '#ae220b' }}
+                >
                   <Icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
@@ -78,67 +84,71 @@ export default function ForExhibitors() {
           })}
         </div>
 
-        {/* How it works */}
-        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 mb-16">
+        {/* How it works - white numbers for visibility */}
+        <div className="bg-gray-900 rounded-3xl p-8 md:p-12 mb-16">
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-10 text-center">
             Så blir du utställare
           </h3>
           <div className="grid md:grid-cols-4 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="relative">
-                <div className="text-5xl font-bold text-white/10 mb-4">{step.number}</div>
+                <div className="text-5xl font-bold text-white/30 mb-4">{step.number}</div>
                 <h4 className="text-lg font-semibold text-white mb-2">{step.title}</h4>
                 <p className="text-gray-400 text-sm">{step.description}</p>
                 {index < steps.length - 1 && (
-                  <ArrowRight className="hidden md:block absolute top-8 -right-4 w-6 h-6 text-white/20" />
+                  <ArrowRight className="hidden md:block absolute top-8 -right-4 w-6 h-6 text-white/30" />
                 )}
               </div>
             ))}
           </div>
         </div>
 
-        {/* Exhibition Booking Cards */}
+        {/* Exhibition Booking Cards - Match each fair's color profile */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          <a href="#" className="group p-6 rounded-2xl border-2 border-amber-200 bg-amber-50 hover:border-amber-500 hover:shadow-lg transition-all">
-            <div className="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <FileText className="w-6 h-6 text-white" />
+          {/* Skogstransport - Black/Yellow with white button */}
+          <a href="/skogstransport" className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all" style={{ borderColor: '#1A1A1A', backgroundColor: '#1A1A1A' }}>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style={{ backgroundColor: '#FFE500' }}>
+              <FileText className="w-6 h-6" style={{ color: '#1A1A1A' }} />
             </div>
-            <h4 className="font-bold text-gray-900 mb-2">Skogstransport</h4>
-            <p className="text-sm text-gray-600 mb-4">Boka monter för Sveriges största skogstransportmässa</p>
-            <span className="text-amber-600 font-medium text-sm flex items-center">
+            <h4 className="font-bold text-white mb-2">Skogstransport</h4>
+            <p className="text-sm text-gray-300 mb-4">Boka monter för Sveriges största skogstransportmässa</p>
+            <span className="inline-flex items-center px-4 py-2 bg-white text-gray-900 font-medium text-sm rounded-full group-hover:bg-gray-100 transition-all">
               Boka nu <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </a>
 
-          <a href="#" className="group p-6 rounded-2xl border-2 border-green-200 bg-green-50 hover:border-green-500 hover:shadow-lg transition-all">
-            <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          {/* Gård & Skog - Green with white button */}
+          <a href="/gard-skog" className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all" style={{ borderColor: '#166534', backgroundColor: '#166534' }}>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style={{ backgroundColor: '#22C55E' }}>
               <FileText className="w-6 h-6 text-white" />
             </div>
-            <h4 className="font-bold text-gray-900 mb-2">Gård & Skog</h4>
-            <p className="text-sm text-gray-600 mb-4">Visa upp dina produkter för lantbruks- och skogsägare</p>
-            <span className="text-green-600 font-medium text-sm flex items-center">
+            <h4 className="font-bold text-white mb-2">Gård & Skog</h4>
+            <p className="text-sm text-green-100 mb-4">Visa upp dina produkter för lantbruks- och skogsägare</p>
+            <span className="inline-flex items-center px-4 py-2 bg-white text-gray-900 font-medium text-sm rounded-full group-hover:bg-gray-100 transition-all">
               Boka nu <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </a>
 
-          <a href="#" className="group p-6 rounded-2xl border-2 border-orange-200 bg-orange-50 hover:border-orange-500 hover:shadow-lg transition-all">
-            <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          {/* Park & Gata - Orange with white button */}
+          <a href="/park-gata" className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all" style={{ borderColor: '#EA580C', backgroundColor: '#EA580C' }}>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style={{ backgroundColor: '#FB923C' }}>
               <FileText className="w-6 h-6 text-white" />
             </div>
-            <h4 className="font-bold text-gray-900 mb-2">Park & Gata</h4>
-            <p className="text-sm text-gray-600 mb-4">Nå beslutsfattare inom offentlig förvaltning</p>
-            <span className="text-orange-600 font-medium text-sm flex items-center">
+            <h4 className="font-bold text-white mb-2">Park & Gata</h4>
+            <p className="text-sm text-orange-100 mb-4">Nå beslutsfattare inom offentlig förvaltning</p>
+            <span className="inline-flex items-center px-4 py-2 bg-white text-gray-900 font-medium text-sm rounded-full group-hover:bg-gray-100 transition-all">
               Boka nu <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </a>
 
-          <a href="#" className="group p-6 rounded-2xl border-2 border-cyan-200 bg-cyan-50 hover:border-cyan-500 hover:shadow-lg transition-all">
-            <div className="w-12 h-12 bg-cyan-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          {/* Expo Hälsingland - Blue with white button */}
+          <a href="/expo-halsingland" className="group p-6 rounded-2xl border-2 hover:shadow-lg transition-all" style={{ borderColor: '#0369A1', backgroundColor: '#0369A1' }}>
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" style={{ backgroundColor: '#38BDF8' }}>
               <FileText className="w-6 h-6 text-white" />
             </div>
-            <h4 className="font-bold text-gray-900 mb-2">Expo Hälsingland</h4>
-            <p className="text-sm text-gray-600 mb-4">Rekrytera och visa upp din verksamhet i regionen</p>
-            <span className="text-cyan-600 font-medium text-sm flex items-center">
+            <h4 className="font-bold text-white mb-2">Expo Hälsingland</h4>
+            <p className="text-sm text-sky-100 mb-4">Rekrytera och visa upp din verksamhet i regionen</p>
+            <span className="inline-flex items-center px-4 py-2 bg-white text-gray-900 font-medium text-sm rounded-full group-hover:bg-gray-100 transition-all">
               Boka nu <ArrowRight className="w-4 h-4 ml-1" />
             </span>
           </a>

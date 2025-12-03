@@ -1,156 +1,145 @@
 import { useState } from 'react'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Menu, X } from 'lucide-react'
 
-const exhibitions = [
-  { name: 'Skogstransport', href: '#skogstransport', color: 'text-amber-500' },
-  { name: 'Gård & Skog', href: '#gardskog', color: 'text-green-500' },
-  { name: 'Park & Gata', href: '#parkgata', color: 'text-orange-500' },
-  { name: 'Expo Hälsingland 2027', href: '#expo', color: 'text-cyan-500' },
+// Navigation items with brand colors matching each fair's logo
+const navItems = [
+  { 
+    name: 'Hem', 
+    href: '/', 
+    // Mittia brand: golden yellow background with dark red text
+    style: { bg: '#FFE500', text: '#8B1E3F', hoverBg: '#FFD000' }
+  },
+  { 
+    name: 'Skogstransport', 
+    href: '/skogstransport', 
+    // Black background with yellow text - matching Skogstransport logo
+    style: { bg: '#1A1A1A', text: '#FFE500', hoverBg: '#333333' }
+  },
+  { 
+    name: 'Gård & Skog', 
+    href: '/gard-skog', 
+    // Green theme
+    style: { bg: '#166534', text: '#FFFFFF', hoverBg: '#15803d' }
+  },
+  { 
+    name: 'Park & Gata', 
+    href: '/park-gata', 
+    // Orange theme
+    style: { bg: '#EA580C', text: '#FFFFFF', hoverBg: '#F97316' }
+  },
+  { 
+    name: 'Expo Hälsingland', 
+    href: '/expo-halsingland', 
+    // Blue/teal theme
+    style: { bg: '#0369A1', text: '#FFFFFF', hoverBg: '#0284C7' }
+  },
 ]
 
-export default function Header({ isScrolled }) {
+export default function Header({ isScrolled, isHomePage }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [exhibitionsOpen, setExhibitionsOpen] = useState(false)
+  const location = useLocation()
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-          : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md"
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center space-x-2">
-            <div className={`text-2xl font-bold tracking-tight ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-              <span className="text-amber-500">M</span>
-              <span className="text-green-500">I</span>
-              <span className="text-orange-500">T</span>
-              <span className="text-cyan-500">T</span>
-              <span>IA</span>
+        <div className="flex items-center justify-between h-24">
+          {/* Logo - with white circular background for clean display */}
+          <Link to="/" className="flex items-center flex-shrink-0">
+            <div className="bg-white rounded-full p-2 shadow-sm">
+              <img 
+                src="/mittia-logo.png" 
+                alt="Mittia Event AB" 
+                className="h-12 lg:h-14 w-auto"
+              />
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {/* Mässor Dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setExhibitionsOpen(!exhibitionsOpen)}
-                className={`flex items-center space-x-1 font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-                }`}
-              >
-                <span>Mässor</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${exhibitionsOpen ? 'rotate-180' : ''}`} />
-              </button>
-              
-              {exhibitionsOpen && (
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-fade-in">
-                  {exhibitions.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className={`block px-4 py-3 hover:bg-gray-50 transition-colors ${item.color}`}
-                      onClick={() => setExhibitionsOpen(false)}
-                    >
-                      <span className="font-medium text-gray-900">{item.name}</span>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <a 
-              href="#utstallare" 
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              För utställare
-            </a>
-            <a 
-              href="#besokare" 
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}
-            >
-              För besökare
-            </a>
-            <a 
-              href="#om-mittia" 
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}
+          {/* Desktop Navigation - color-coded pills for each fair */}
+          <div className="hidden lg:flex items-center space-x-2">
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.href
+              return (
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="px-4 py-2.5 font-semibold text-base tracking-wide transition-all rounded-full hover:scale-105 shadow-sm"
+                  style={{
+                    backgroundColor: item.style.bg,
+                    color: item.style.text
+                  }}
+                >
+                  {item.name}
+                </Link>
+              )
+            })}
+            
+            {/* Om Mittia & Kontakt - Mittia-röd #ae220b */}
+            <div className="w-px h-6 mx-2 bg-gray-200" />
+            <Link
+              to="/om-mittia"
+              className="px-4 py-2.5 font-semibold text-base transition-all rounded-full hover:scale-105 shadow-sm"
+              style={{ backgroundColor: '#ae220b', color: '#FFFFFF' }}
             >
               Om Mittia
-            </a>
-            <a 
-              href="#kontakt" 
-              className={`font-medium transition-colors ${
-                isScrolled ? 'text-gray-700 hover:text-gray-900' : 'text-white/90 hover:text-white'
-              }`}
+            </Link>
+            <Link
+              to="/kontakt"
+              className="px-4 py-2.5 font-semibold text-base transition-all rounded-full hover:scale-105 shadow-sm"
+              style={{ backgroundColor: '#ae220b', color: '#FFFFFF' }}
             >
               Kontakt
-            </a>
-
-            {/* CTA Button */}
-            <a 
-              href="#massor" 
-              className="px-5 py-2.5 bg-gradient-to-r from-amber-500 via-green-500 to-cyan-500 text-white font-semibold rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
-            >
-              Boka monter
-            </a>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg ${isScrolled ? 'text-gray-900' : 'text-white'}`}
+            className="lg:hidden p-2 rounded-lg transition-colors text-gray-900 hover:bg-gray-100"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation - color-coded items */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-white rounded-2xl shadow-xl mt-2 p-4 animate-fade-in">
-            <div className="space-y-1">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-4 py-2">Mässor</p>
-              {exhibitions.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-gray-900"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <hr className="my-2" />
-              <a href="#utstallare" className="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-gray-900" onClick={() => setMobileMenuOpen(false)}>
-                För utställare
-              </a>
-              <a href="#besokare" className="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-gray-900" onClick={() => setMobileMenuOpen(false)}>
-                För besökare
-              </a>
-              <a href="#om-mittia" className="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-gray-900" onClick={() => setMobileMenuOpen(false)}>
+          <div className="lg:hidden bg-white rounded-xl shadow-xl mt-2 p-4 border border-gray-100 mb-4">
+            <div className="space-y-2">
+              {navItems.map((item) => {
+                const isActive = location.pathname === item.href
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="block px-4 py-3 rounded-lg font-semibold transition-all"
+                    style={{
+                      backgroundColor: isActive ? item.style.bg : 'transparent',
+                      color: isActive ? item.style.text : '#1A1A1A',
+                      border: isActive ? 'none' : `2px solid ${item.style.bg}`
+                    }}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })}
+              <hr className="my-3" />
+              <Link 
+                to="/om-mittia" 
+                className="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-600 font-medium" 
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Om Mittia
-              </a>
-              <a href="#kontakt" className="block px-4 py-3 rounded-lg hover:bg-gray-50 font-medium text-gray-900" onClick={() => setMobileMenuOpen(false)}>
+              </Link>
+              <Link 
+                to="/kontakt" 
+                className="block px-4 py-3 rounded-lg hover:bg-gray-50 text-gray-600 font-medium" 
+                onClick={() => setMobileMenuOpen(false)}
+              >
                 Kontakt
-              </a>
-              <div className="pt-2">
-                <a 
-                  href="#massor" 
-                  className="block w-full text-center px-5 py-3 bg-gradient-to-r from-amber-500 via-green-500 to-cyan-500 text-white font-semibold rounded-full"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Boka monter
-                </a>
-              </div>
+              </Link>
             </div>
           </div>
         )}

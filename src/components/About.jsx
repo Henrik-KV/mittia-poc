@@ -14,7 +14,10 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
-            <span className="inline-block px-4 py-2 bg-gray-900 text-white text-sm font-medium rounded-full mb-6">
+            <span 
+              className="inline-block px-4 py-2 text-white text-sm font-medium rounded-full mb-6"
+              style={{ backgroundColor: '#ae220b' }}
+            >
               Om Mittia
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -40,36 +43,39 @@ export default function About() {
               </p>
             </div>
 
-            {/* Services */}
+            {/* Services - Neutral dark cards */}
             <div className="mt-10 grid grid-cols-3 gap-6">
-              <div className="text-center p-4 bg-gray-50 rounded-2xl">
-                <div className="text-2xl font-bold text-amber-500 mb-1">Expo</div>
-                <p className="text-sm text-gray-600">Mässor & utställningar</p>
+              <div className="text-center p-4 bg-gray-900 rounded-2xl">
+                <div className="text-2xl font-bold text-white mb-1">Expo</div>
+                <p className="text-sm text-gray-400">Mässor & utställningar</p>
               </div>
-              <div className="text-center p-4 bg-gray-50 rounded-2xl">
-                <div className="text-2xl font-bold text-green-500 mb-1">Event</div>
-                <p className="text-sm text-gray-600">Företags- & konsumentevent</p>
+              <div className="text-center p-4 bg-gray-800 rounded-2xl">
+                <div className="text-2xl font-bold text-white mb-1">Event</div>
+                <p className="text-sm text-gray-400">Företags- & konsumentevent</p>
               </div>
-              <div className="text-center p-4 bg-gray-50 rounded-2xl">
-                <div className="text-2xl font-bold text-cyan-500 mb-1">Rådgivning</div>
-                <p className="text-sm text-gray-600">Koncept & planering</p>
+              <div className="text-center p-4 bg-gray-700 rounded-2xl">
+                <div className="text-2xl font-bold text-white mb-1">Rådgivning</div>
+                <p className="text-sm text-gray-300">Koncept & planering</p>
               </div>
             </div>
           </div>
 
           {/* Image/Visual */}
           <div className="relative">
-            <div className="aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+            <div className="aspect-square rounded-3xl overflow-hidden bg-gray-100">
               <img 
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                src="/massan-bild.jpg" 
                 alt="Mässa och event" 
                 className="w-full h-full object-cover"
               />
             </div>
-            {/* Floating Card */}
+            {/* Floating Card - Mittia red location badge */}
             <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-xl p-6 max-w-xs">
               <div className="flex items-center space-x-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-green-500 rounded-xl flex items-center justify-center">
+                <div 
+                  className="w-12 h-12 rounded-xl flex items-center justify-center"
+                  style={{ backgroundColor: '#ae220b' }}
+                >
                   <MapPin className="w-6 h-6 text-white" />
                 </div>
                 <div>
@@ -105,10 +111,43 @@ export default function About() {
           <p className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-8">
             Samarbetspartners
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            <div className="text-xl font-bold text-gray-400">Ljusdals Kommun</div>
-            <div className="text-xl font-bold text-gray-400">Destination Hälsingland</div>
-            <div className="text-xl font-bold text-gray-400">Region Gävleborg</div>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <a 
+              href="https://www.ljusdal.se/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="h-20 md:h-24 px-6 py-3 bg-gray-100 rounded-xl flex items-center justify-center hover:bg-gray-200 transition-colors"
+            >
+              <img 
+                src="/ljusdals-kommun-logga.png" 
+                alt="Ljusdals kommun" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </a>
+            <a 
+              href="https://destinationhalsingland.se/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="h-20 md:h-24 px-6 py-3 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-gray-700 transition-colors"
+            >
+              <img 
+                src="/logo-halsingland-amba-vit-guld.png" 
+                alt="Destination Hälsingland" 
+                className="h-16 md:h-20 w-auto object-contain"
+              />
+            </a>
+            <a 
+              href="https://www.regiongavleborg.se/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="h-20 md:h-24 px-6 py-3 bg-gray-100 rounded-xl flex items-center justify-center hover:bg-gray-200 transition-colors"
+            >
+              <img 
+                src="/rg_logo.png" 
+                alt="Region Gävleborg" 
+                className="h-14 md:h-16 w-auto object-contain"
+              />
+            </a>
           </div>
         </div>
       </div>

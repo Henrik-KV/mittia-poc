@@ -1,4 +1,5 @@
 import { ArrowRight, Calendar, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const news = [
   {
@@ -8,7 +9,8 @@ const news = [
     title: 'Anmälan öppen för Skogstransport 2026',
     excerpt: 'Nu kan utställare boka sina monterplatser för nästa års mässa. Säkra din plats tidigt för bästa läge.',
     date: '2024-12-01',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: '/forestry.jpeg',
+    link: '/skogstransport'
   },
   {
     id: 2,
@@ -17,7 +19,8 @@ const news = [
     title: 'Rekordmånga utställare anmälda',
     excerpt: 'Intresset för Gård & Skog 2026 överträffar alla förväntningar. Över 100 utställare redan anmälda.',
     date: '2024-11-28',
-    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    link: '/gard-skog'
   },
   {
     id: 3,
@@ -26,7 +29,8 @@ const news = [
     title: 'Expo Hälsingland 2027 presenteras',
     excerpt: 'En helt ny mässa för regional utveckling, rekrytering och företagsetablering i Hälsingland.',
     date: '2024-11-15',
-    image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+    image: '/halsingland-mittia.jpg',
+    link: '/expo-halsingland'
   }
 ]
 
@@ -88,12 +92,12 @@ export default function News() {
                     {item.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{item.excerpt}</p>
-                  <a 
-                    href="#" 
+                  <Link 
+                    to={item.link} 
                     className="inline-flex items-center text-gray-900 font-medium hover:text-amber-600 transition-colors"
                   >
                     Läs mer <ChevronRight className="w-4 h-4 ml-1" />
-                  </a>
+                  </Link>
                 </div>
               </article>
             ))}
